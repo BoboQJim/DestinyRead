@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DestinyRead - Free Fortune Telling | Daily Horoscope & Tarot Readings</title>
+    <meta name="description" content="Get free personalized fortune telling readings for luck, health, destiny, and wealth. Our accurate divination tools provide insights into your future and life path.">
+    <meta name="keywords" content="free fortune telling, online divination, luck prediction, health forecast, destiny reading, wealth fortune, free tarot, daily horoscope">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="DestinyRead - Free Fortune Telling & Divination">
+    <meta property="og:description" content="Free personalized readings for luck, health, destiny, and wealth. Get insights into your future today.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.destinyread.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7B2CBF', // Purple
+                        secondary: '#F59E0B', // Gold
+                        accent: '#10B981', // Emerald
+                        dark: '#1E1B4B', // Indigo
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(123, 44, 191, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(123, 44, 191, 0.8)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                },
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+            .bg-gradient-mystic {
+                background: linear-gradient(135deg, #1E1B4B 0%, #4C1D95 100%);
+            }
+            .bg-glass {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            .border-glow {
+                box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
+            .nav-scrolled {
+                @apply bg-dark/95 shadow-lg;
+            }
+        }
+    </style>
+</head>
+<body class="font-poppins bg-gradient-to-br from-gray-50 to-purple-50 text-gray-800 min-h-screen flex flex-col">
+    <!-- Navigation - Improved visibility with gradient background -->
+    <header id="main-header" class="sticky top-0 z-50 transition-all duration-300 bg-gradient-to-r from-dark to-primary/90 text-white border-b border-purple-200/20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center animate-pulse-slow">
+                            <i class="fa fa-compass text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-playfair font-bold">DestinyRead</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-secondary transition-colors">Home</a>
+                    <a href="#free-readings" class="hover:text-secondary transition-colors">Free Readings</a>
+                    <a href="#services" class="hover:text-secondary transition-colors">Services</a>
+                    <a href="#how-it-works" class="hover:text-secondary transition-colors">How It Works</a>
+                    <a href="#testimonials" class="hover:text-secondary transition-colors">Testimonials</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-white hover:text-secondary">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-dark/95 border-t border-purple-200/20">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block text-white hover:text-secondary transition-colors py-2">Home</a>
+                <a href="#free-readings" class="block text-white hover:text-secondary transition-colors py-2">Free Readings</a>
+                <a href="#services" class="block text-white hover:text-secondary transition-colors py-2">Services</a>
+                <a href="#how-it-works" class="block text-white hover:text-secondary transition-colors py-2">How It Works</a>
+                <a href="#testimonials" class="block text-white hover:text-secondary transition-colors py-2">Testimonials</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="home" class="relative py-16 md:py-24 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-mystic -z-10"></div>
+            
+            <!-- Decorative Elements -->
+            <div class="absolute top-1/4 left-10 w-32 h-32 rounded-full bg-primary/20 blur-3xl animate-float"></div>
+            <div class="absolute bottom-1/4 right-10 w-40 h-40 rounded-full bg-secondary/20 blur-3xl animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/3 w-20 h-20 rounded-full bg-accent/20 blur-2xl animate-float" style="animation-delay: 1s;"></div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="text-white space-y-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-playfair font-bold leading-tight text-shadow-lg">
+                                Free <span class="text-secondary">Fortune Telling</span> For Your Future
+                            </h1>
+                            <p class="text-[clamp(1rem,2vw,1.25rem)] text-purple-100 max-w-xl">
+                                Get personalized insights into your luck, health, destiny, and wealth with our free divination tools.
+                            </p>
+                            <div class="pt-4 flex flex-wrap gap-4">
+                                <a href="#free-readings" class="inline-block bg-secondary hover:bg-secondary/90 text-white font-medium px-8 py-3 rounded-lg shadow-lg shadow-secondary/20 transition-all transform hover:-translate-y-1">
+                                    Get Free Reading <i class="fa fa-arrow-right ml-2"></i>
+                                </a>
+                                <a href="#services" class="inline-block bg-white/10 hover:bg-white/20 text-white font-medium px-8 py-3 rounded-lg transition-all transform hover:-translate-y-1">
+                                    Explore Services
+                                </a>
+                            </div>
+                            
+                            <!-- Trust indicators -->
+                            <div class="pt-6 flex items-center text-sm text-purple-100">
+                                <div class="flex -space-x-2 mr-4">
+                                    <img src="https://picsum.photos/id/64/100/100" alt="User" class="w-8 h-8 rounded-full border-2 border-dark">
+                                    <img src="https://picsum.photos/id/91/100/100" alt="User" class="w-8 h-8 rounded-full border-2 border-dark">
+                                    <img src="https://picsum.photos/id/26/100/100" alt="User" class="w-8 h-8 rounded-full border-2 border-dark">
+                                    <div class="w-8 h-8 rounded-full border-2 border-dark bg-primary flex items-center justify-center text-xs">+2k</div>
+                                </div>
+                                <span>Trusted by 2,000+ daily users</span>
+                            </div>
+                        </div>
+                        
+                        <div class="relative animate-fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="relative z-10 rounded-2xl overflow-hidden border-2 border-secondary/30 border-glow p-1">
+                                <img src="https://picsum.photos/id/175/600/500" alt="Crystal ball with fortune telling" class="w-full h-auto rounded-xl">
+                            </div>
+                            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/30 rounded-full blur-2xl -z-10"></div>
+                            <div class="absolute -top-6 -left-6 w-24 h-24 bg-secondary/30 rounded-full blur-2xl -z-10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Featured Benefits Section -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa fa-gift text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-medium">100% Free</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa fa-bolt text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-medium">Instant Results</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa fa-lock text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-medium">Private & Secure</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa fa-refresh text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-medium">Unlimited Readings</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Fortune Reading Form Section -->
+        <section id="free-readings" class="py-16 md:py-24 relative">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center mb-12">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-playfair font-bold mb-4">Get Your Free Personalized Reading</h2>
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                        Receive instant insights into your luck, health, destiny, or wealth with our free divination tool.
+                    </p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-5">
+                        <!-- Form Side -->
+                        <div class="lg:col-span-3 p-6 md:p-8">
+                            <form id="fortune-form" class="space-y-6">
+                                <div>
+                                    <label for="full-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <input type="text" id="full-name" name="full-name" 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                        placeholder="Your name" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="birth-date" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                    <input type="date" id="birth-date" name="birth-date" 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                        required>
+                                </div>
+                                
+                                <div>
+                                    <label for="question-type" class="block text-sm font-medium text-gray-700 mb-1">What would you like to know?</label>
+                                    <select id="question-type" name="question-type" 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                        required>
+                                        <option value="" disabled selected>Select a category</option>
+                                        <option value="love">Love & Relationships Luck</option>
+                                        <option value="career">Career & Financial Wealth</option>
+                                        <option value="health">Health & Wellness</option>
+                                        <option value="future">Destiny & Future Outlook</option>
+                                        <option value="decision">Important Life Decisions</option>
+                                        <option value="spiritual">Spiritual Guidance</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="specific-question" class="block text-sm font-medium text-gray-700 mb-1">Your Specific Question (Optional)</label>
+                                    <textarea id="specific-question" name="specific-question" rows="3"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                        placeholder="Ask a specific question for more detailed insights"></textarea>
+                                </div>
+                                
+                                <div class="pt-4">
+                                    <button type="submit" id="generate-reading" 
+                                        class="w-full bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-1 flex items-center justify-center">
+                                        <i class="fa fa-magic mr-2"></i> Generate Free Reading
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Image Side -->
+                        <div class="lg:col-span-2 bg-gradient-to-br from-primary to-dark hidden lg:block">
+                            <div class="h-full flex flex-col justify-center items-center p-8 text-white text-center">
+                                <div class="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mb-6 animate-float">
+                                    <i class="fa fa-compass text-secondary text-3xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-playfair font-bold mb-4">Free Destiny Insights</h3>
+                                <p class="text-purple-100 mb-6">
+                                    Our free readings provide personalized guidance for your luck, health, destiny, and wealth.
+                                </p>
+                                <div class="space-y-4 w-full">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fa fa-check-circle text-secondary"></i>
+                                        <span>100% Free Forever</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fa fa-check-circle text-secondary"></i>
+                                        <span>No Credit Card Required</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fa fa-check-circle text-secondary"></i>
+                                        <span>Unlimited Readings</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Reading Results Section -->
+        <section id="reading-results" class="py-16 hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-playfair font-bold mb-4">Your Free Personalized Reading</h2>
+                        <p class="text-gray-600" id="reading-header">Insights for <span id="result-name" class="font-medium text-primary"></span> regarding <span id="result-category" class="font-medium text-primary"></span></p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-purple-100">
+                        <div class="p-6 md:p-8">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <i class="fa fa-calendar text-primary"></i>
+                                        <span class="text-sm text-gray-500" id="reading-date"></span>
+                                    </div>
+                                    <h3 class="text-xl font-playfair font-semibold" id="reading-title">Your Destiny Reading</h3>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button id="download-reading" class="p-2 text-gray-500 hover:text-primary transition-colors" title="Download Reading">
+                                        <i class="fa fa-download"></i>
+                                    </button>
+                                    <button id="share-reading" class="p-2 text-gray-500 hover:text-primary transition-colors" title="Share Reading">
+                                        <i class="fa fa-share-alt"></i>
+                                    </button>
+                                    <button id="print-reading" class="p-2 text-gray-500 hover:text-primary transition-colors" title="Print Reading">
+                                        <i class="fa fa-print"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-purple-100 pt-6" id="reading-content">
+                                <!-- Reading content will be inserted here -->
+                            </div>
+                            
+                            <div class="mt-8 pt-6 border-t border-purple-100">
+                                <h4 class="font-medium text-gray-700 mb-4">Practical Guidance</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="bg-purple-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-primary mb-2">Recommended Action</h5>
+                                        <p class="text-gray-600 text-sm" id="action-item"></p>
+                                    </div>
+                                    <div class="bg-amber-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-secondary mb-2">Lucky Element</h5>
+                                        <p class="text-gray-600 text-sm" id="lucky-element"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                                <button id="new-reading" class="flex-1 bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-all">
+                                    Get Another Free Reading
+                                </button>
+                                <button id="different-category" class="flex-1 bg-white border border-primary text-primary hover:bg-purple-50 font-medium px-6 py-3 rounded-lg transition-all">
+                                    Try Different Category
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="services" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-playfair font-bold mb-4">Free Fortune Telling Services</h2>
+                    <p class="text-gray-600 text-lg">
+                        Explore our range of free divination services for insights into your luck, health, destiny, and wealth
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/24/600/400" alt="Love & Relationship Reading" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i class="fa fa-heart text-red-500"></i>
+                                <h3 class="text-xl font-playfair font-semibold">Love & Relationship Luck</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Free insights about your romantic life, potential partners, and relationship dynamics.
+                            </p>
+                            <a href="#free-readings" class="text-primary hover:text-primary/80 font-medium inline-flex items-center service-link" data-service="love">
+                                Get Free Love Reading <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/180/600/400" alt="Career & Finance Reading" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i class="fa fa-briefcase text-blue-500"></i>
+                                <h3 class="text-xl font-playfair font-semibold">Wealth & Career</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Free guidance on career paths, financial opportunities, and wealth potential.
+                            </p>
+                            <a href="#free-readings" class="text-primary hover:text-primary/80 font-medium inline-flex items-center service-link" data-service="career">
+                                Get Free Wealth Reading <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/1080/600/400" alt="Health Reading" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i class="fa fa-heartbeat text-green-500"></i>
+                                <h3 class="text-xl font-playfair font-semibold">Health & Wellness</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Free insights about your physical and emotional wellbeing and health trends.
+                            </p>
+                            <a href="#free-readings" class="text-primary hover:text-primary/80 font-medium inline-flex items-center service-link" data-service="health">
+                                Get Free Health Reading <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/1040/600/400" alt="Destiny Reading" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i class="fa fa-compass text-purple-500"></i>
+                                <h3 class="text-xl font-playfair font-semibold">Destiny & Life Path</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Free understanding of your life's purpose, challenges, and destiny opportunities.
+                            </p>
+                            <a href="#free-readings" class="text-primary hover:text-primary/80 font-medium inline-flex items-center service-link" data-service="future">
+                                Get Free Destiny Reading <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/1060/600/400" alt="Decision Making Reading" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i class="fa fa-balance-scale text-gray-500"></i>
+                                <h3 class="text-xl font-playfair font-semibold">Life Decisions</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Free guidance for important choices and decisions in your personal journey.
+                            </p>
+                            <a href="#free-readings" class="text-primary hover:text-primary/80 font-medium inline-flex items-center service-link" data-service="decision">
+                                Get Free Decision Reading <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/1059/600/400" alt="Spiritual Guidance" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i class="fa fa-moon-o text-indigo-500"></i>
+                                <h3 class="text-xl font-playfair font-semibold">Spiritual Guidance</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Free insights for your spiritual journey and connection to higher consciousness.
+                            </p>
+                            <a href="#free-readings" class="text-primary hover:text-primary/80 font-medium inline-flex items-center service-link" data-service="spiritual">
+                                Get Free Spiritual Reading <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-16 md:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-playfair font-bold mb-4">How Our Free Fortune Telling Works</h2>
+                    <p class="text-gray-600 text-lg">
+                        Get instant personalized insights into your luck, health, destiny, and wealth in just 3 simple steps
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                    <!-- Connecting Line - Desktop Only -->
+                    <div class="hidden md:block absolute top-1/4 left-0 right-0 h-1 bg-purple-200 -z-10"></div>
+                    
+                    <!-- Step 1 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10">1</div>
+                        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                            <h3 class="text-xl font-playfair font-semibold mb-3">Enter Your Information</h3>
+                            <p class="text-gray-600">
+                                Provide your name, birth date, and select the area of life you'd like insights about (luck, health, destiny, wealth).
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10">2</div>
+                        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                            <h3 class="text-xl font-playfair font-semibold mb-3">Generate Your Free Reading</h3>
+                            <p class="text-gray-600">
+                                Our system processes your information to create a personalized fortune reading instantly.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10">3</div>
+                        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                            <h3 class="text-xl font-playfair font-semibold mb-3">Receive Your Insights</h3>
+                            <p class="text-gray-600">
+                                Review your free reading with guidance for your luck, health, destiny, or wealth journey.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 md:py-24 bg-gradient-mystic text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-playfair font-bold mb-4">What Users Say About Our Free Readings</h2>
+                    <p class="text-purple-100 text-lg">
+                        Real experiences from people who received insights into their luck, health, destiny, and wealth
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-glass rounded-xl p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/id/64/100/100" alt="Sarah J." class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-medium">Sarah J.</h4>
+                                <div class="flex text-secondary">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-purple-100 mb-3">
+                            "The free love luck reading from DestinyRead was incredibly accurate. It described my relationship perfectly and gave me valuable insights that helped improve things dramatically."
+                        </p>
+                        <div class="text-sm text-purple-200">Love & Relationship Reading</div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-glass rounded-xl p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/id/91/100/100" alt="Michael T." class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-medium">Michael T.</h4>
+                                <div class="flex text-secondary">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-purple-100 mb-3">
+                            "I was skeptical about free wealth readings, but DestinyRead's guidance helped me make a career decision that significantly improved my financial situation!"
+                        </p>
+                        <div class="text-sm text-purple-200">Wealth & Career Reading</div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="bg-glass rounded-xl p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/id/26/100/100" alt="Elena K." class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-medium">Elena K.</h4>
+                                <div class="flex text-secondary">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-purple-100 mb-3">
+                            "The free destiny reading from DestinyRead gave me a new perspective on my life path. It helped me understand challenges I've faced and how they've shaped who I am today."
+                        </p>
+                        <div class="text-sm text-purple-200">Destiny & Life Path Reading</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto bg-gradient-to-r from-primary to-dark rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 items-center">
+                        <div class="p-8 md:p-12 text-white">
+                            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-playfair font-bold mb-4">Discover Your Fortune Today</h2>
+                            <p class="text-purple-100 mb-8">
+                                Get your free personalized reading for luck, health, destiny, or wealth. No credit card required, 100% free forever.
+                            </p>
+                            <a href="#free-readings" class="inline-block bg-secondary hover:bg-secondary/90 text-white font-medium px-8 py-3 rounded-lg shadow-lg shadow-secondary/20 transition-all transform hover:-translate-y-1">
+                                Get Your Free Reading Now
+                            </a>
+                        </div>
+                        <div class="hidden lg:block h-full">
+                            <img src="https://picsum.photos/id/110/600/400" alt="Fortune telling crystals" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Brand Info -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                            <i class="fa fa-compass text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-playfair font-bold">DestinyRead</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Free personalized fortune telling readings for your luck, health, destiny, and wealth. Get insights into your future today.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-medium mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#free-readings" class="text-gray-400 hover:text-white transition-colors">Free Readings</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Reading Services</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">User Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h3 class="text-lg font-medium mb-6">Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="openDisclaimer(); return false;">Disclaimer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="openPrivacyPolicy(); return false;">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="openTerms(); return false;">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                        &copy; 2023 DestinyRead. All rights reserved. Free fortune telling for entertainment purposes.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        Our free readings are for entertainment. Always make your own decisions.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Loading Modal -->
+    <div id="loading-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full text-center">
+            <div class="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto mb-6"></div>
+            <h3 class="text-xl font-playfair font-bold mb-2">Generating Your Free Reading</h3>
+            <p class="text-gray-600">
+                We're preparing your personalized insights for luck, health, destiny, or wealth...
+            </p>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div id="notification" class="fixed bottom-6 right-6 bg-dark text-white p-4 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 z-50 max-w-xs">
+        <i id="notification-icon" class="fa fa-check-circle text-secondary text-xl"></i>
+        <div>
+            <h4 id="notification-title" class="font-medium">Success</h4>
+            <p id="notification-message" class="text-gray-300 text-sm">Your reading has been generated</p>
+        </div>
+        <button id="close-notification" class="text-gray-400 hover:text-white ml-2">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+    
+    <!-- Legal Modal -->
+    <div id="legal-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[80vh] overflow-y-auto m-4 transform scale-95 transition-transform duration-300">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white z-10">
+                <h3 id="legal-title" class="text-xl font-playfair font-bold text-dark">Disclaimer</h3>
+                <button id="close-legal" class="text-gray-400 hover:text-gray-600">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="legal-content" class="p-6 text-gray-700">
+                <!-- Content will be inserted by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample reading content data - focused on luck, health, destiny, wealth
+        const readingTemplates = {
+            love: {
+                titles: [
+                    "Your Romantic Luck",
+                    "Love Fortune Insights",
+                    "Relationship Destiny",
+                    "Matters of the Heart"
+                ],
+                openings: [
+                    "Your love luck is entering a period of significant transformation. Recent challenges have prepared you for deeper connections that align with your true destiny.",
+                    "Cosmic energies indicate a positive shift in your romantic vibrations. You're ready to attract or nurture a relationship that enhances your life's journey.",
+                    "Your heart's desire is coming into focus, and the universe is aligning to bring you meaningful connection. The lessons of the past are now guiding your romantic destiny.",
+                    "Love luck suggests that vulnerability will be your greatest strength. Opening yourself to authentic connection will yield surprising and positive results."
+                ],
+                bodies: [
+                    "In the coming weeks, you may encounter someone who mirrors your values and aspirations. This connection has the potential to grow if you let go of past expectations that have been blocking your love luck. Communication will be key - express your true feelings without fear of judgment. An existing relationship could deepen through shared vulnerability and honest dialogue. Trust your intuition when making decisions about your romantic future; it knows what your heart truly needs to fulfill its destiny.",
+                    "A significant person from your past might reappear, offering closure or a new beginning. This encounter serves as a mirror, reflecting how much you've grown and how your love luck has evolved. Current relationships require attention to emotional details you might be overlooking. Small, consistent acts of love will strengthen your bonds more than grand gestures. Be mindful of projecting your needs onto others; true connection comes from seeing and accepting people as they are, which will positively influence your romantic destiny.",
+                    "You're in a phase where self-love is preparing you for the love you desire. Focus on nurturing your own happiness, and you'll naturally attract compatible energies that align with your luck. A potential connection may develop from a friendship or professional relationship - keep an open mind about how love can enter your life. Avoid rushing into labels; allow relationships to unfold organically. Trust that the right person will appreciate you exactly as you are, contributing positively to your life's destiny.",
+                    "The romantic path ahead holds both challenges and blessings that will shape your luck. A current relationship may require you to set clearer boundaries to create a healthier dynamic that supports your destiny. Single? Your next significant connection could come through a creative or spiritual pursuit that aligns with your passions. Pay attention to synchronicities and coincidences - they may be guiding you toward a meaningful relationship that enhances your life journey. Remember that love flourishes when both partners feel free to be their authentic selves."
+                ],
+                closings: [
+                    "Embrace this period of romantic growth with an open heart and mind. The love you seek is also seeking you, and the universe is orchestrating the perfect timing in your luck journey.",
+                    "Trust that your romantic destiny is unfolding exactly as it should. Every experience, whether joyful or challenging, is preparing you for the love you deserve in your life's journey.",
+                    "Your capacity to love and be loved is expanding. By honoring your truth and respecting others' journeys, you'll create relationships that nurture your soul's growth and enhance your overall luck.",
+                    "The greatest relationship lesson for you now is that true love begins within. As you cultivate self-acceptance, you'll attract relationships that reflect your inner wholeness and support your destiny."
+                ],
+                actions: [
+                    "Express your true feelings to someone important this week, without attachment to the outcome - this will align your energy with positive love luck.",
+                    "Create space for new connections by stepping outside your comfort zone socially, opening yourself to destiny-aligned encounters.",
+                    "Reflect on past relationships to identify patterns that no longer serve you, then release them to clear your love luck path.",
+                    "Write a love letter to yourself acknowledging your worthiness of love and connection, strengthening your romantic destiny energy."
+                ],
+                luckyElements: [
+                    "Rose quartz crystal to amplify love luck energy",
+                    "The color pink to open your heart chakra and attract positive relationship destiny",
+                    "Jasmine essential oil to enhance romantic luck",
+                    "Mondays, which are ruled by the moon and emotional luck"
+                ]
+            },
+            career: {
+                titles: [
+                    "Your Wealth & Career Luck",
+                    "Financial Destiny Insights",
+                    "Career Fortune Reading",
+                    "Professional Wealth Journey"
+                ],
+                openings: [
+                    "Your career luck is in a period of transition. Recent efforts are about to yield recognition and financial opportunities that align with your destiny.",
+                    "Your professional path is expanding in unexpected ways. Skills you've developed are aligning with emerging wealth opportunities in your luck.",
+                    "A new chapter in your work life is beginning. The universe is guiding you toward greater purpose and financial abundance in your destiny.",
+                    "Career insights indicate that now is a favorable time to pursue advancement or a new direction that aligns with your wealth luck and values."
+                ],
+                bodies: [
+                    "Opportunities for advancement and increased wealth are on the horizon, possibly in unexpected forms that align with your luck. A colleague or mentor may play a crucial role in opening new doors for you. Trust your expertise, but remain open to learning from others. Your unique perspective is valuable, and speaking up in the coming weeks could lead to recognition that enhances your financial destiny. Consider whether your current role aligns with your long-term wealth goals - if not, this is an excellent time to explore alternatives that better match your luck. Networking with intention will connect you to people who share your professional vision and can help manifest your financial destiny.",
+                    "A significant project or responsibility may come your way that challenges you to step into a leadership role, enhancing your career luck. Embrace this opportunity, even if you feel unprepared - you have more to offer than you realize. Financial rewards may follow, but the real benefit will be increased confidence in your abilities that strengthens your wealth luck. Be mindful of work-life balance during this busy period; burnout will hinder rather than help your progress. Collaboration will be more effective than going it alone - identify team members whose strengths complement your own to maximize your financial destiny potential.",
+                    "You're being called to align your work with your core values, which will positively impact your wealth luck. A career shift, whether subtle or significant, will bring greater fulfillment and financial abundance. Trust any intuitive nudges toward a particular direction, even if the logical path seems different - this is your destiny guiding you. Your unique talents are needed in the world, and now is the time to fully express them to enhance your luck. Financial concerns may arise during this transition, but trust that resources will appear when needed as part of your wealth destiny. Seek guidance from those who have made similar transitions successfully and aligned with their luck.",
+                    "Recognition for your hard work is imminent, possibly from unexpected sources that will boost your career luck. This could lead to new responsibilities or opportunities to showcase your expertise, enhancing your financial destiny. Consider investing in further education or skill development - it will pay dividends in your professional growth and wealth luck. A difficult work situation is approaching resolution, bringing relief and clarity to your career path. Be open to unconventional career paths that allow you to express your creativity and align with your luck. Your professional reputation is growing, so ensure your actions align with the image you want to project for your financial destiny."
+                ],
+                closings: [
+                    "Your career journey is unfolding with purpose. Trust that each step, whether forward or backward, is guiding you toward your professional destiny and optimal wealth luck.",
+                    "Embrace the professional opportunities coming your way, even if they feel outside your comfort zone. Growth happens when we challenge ourselves to expand our capabilities and align with our luck.",
+                    "Your work serves a greater purpose than you may realize. By bringing your authentic self to your career, you inspire others and create meaningful impact that enhances your wealth destiny and luck.",
+                    "The professional path ahead is bright, with opportunities that align with both your talents and values, leading to enhanced wealth luck and career fulfillment."
+                ],
+                actions: [
+                    "Update your professional materials to reflect your current skills and aspirations, aligning your energy with career advancement luck.",
+                    "Schedule a conversation with a mentor or colleague whose career you admire to gain insights that can enhance your wealth destiny.",
+                    "Identify one skill you'd like to develop that aligns with your financial goals and take a small step toward learning it this week to boost your luck.",
+                    "Set clear intentions for your professional growth by writing down your career and wealth goals for the next year, activating your destiny energy."
+                ],
+                luckyElements: [
+                    "Citrine crystal to attract abundance and career success luck",
+                    "The color green to enhance growth and financial prosperity destiny",
+                    "A small plant on your desk to symbolize professional growth and wealth luck",
+                    "Thursdays, ruled by Jupiter which governs expansion and financial opportunity luck"
+                ]
+            },
+            health: {
+                titles: [
+                    "Your Health & Wellness Luck",
+                    "Vitality Destiny Reading",
+                    "Wellness Fortune Insights",
+                    "Health Journey Luck"
+                ],
+                openings: [
+                    "Your health luck is entering a period of renewal. Small changes will have significant positive impacts on your vitality and overall wellbeing destiny.",
+                    "Your body is communicating important messages about your health luck. Listening to these signals will bring greater vitality and alignment with your wellness destiny.",
+                    "A holistic approach to wellness is needed now, addressing physical, emotional, and spiritual aspects of your health luck and destiny.",
+                    "Health insights indicate that balance is the key to your wellbeing luck. Areas of excess or deficiency are coming to light to guide your wellness journey."
+                ],
+                bodies: [
+                    "Your physical health luck is closely connected to your emotional state during this period. Unresolved stress may be manifesting as physical tension or fatigue that impacts your wellness destiny. Incorporating gentle movement into your daily routine will help release both physical and emotional blockages, improving your health luck. Pay attention to your sleep patterns - quality rest is essential for your current wellbeing and vitality destiny. A change in your diet, even a small one like increasing water intake or reducing processed foods, will bring noticeable benefits to your health luck. Emotional release through journaling or conversation may alleviate physical symptoms you've been experiencing, aligning you with your wellness destiny.",
+                    "Your body is resilient, but it's sending signals that certain habits need attention to maintain positive health luck. Notice patterns in your energy levels throughout the day - they reveal when you're most productive and when you need rest to support your vitality destiny. Nature connection will significantly boost your wellness luck - make time for outdoor activities that ground you. Stress management techniques like deep breathing or meditation will have immediate benefits for both your mental and physical health luck. Be mindful of posture, especially if you spend long hours sitting - small adjustments can prevent future issues in your wellness journey. Your body's wisdom is guiding you toward better health luck; all you need to do is listen to align with your vitality destiny.",
+                    "Holistic wellbeing is within reach through balancing your physical, emotional, and spiritual needs to enhance your health luck. A creative practice may be just as important for your wellness as physical exercise in your destiny journey. Notice how different foods affect not just your body but your mood and mental clarity, which impacts your health luck. Establishing a consistent morning routine that nourishes all aspects of your being will set a positive tone for each day and support your vitality destiny. Relationships that drain your energy may be impacting your health luck more than you realize. Your intuition is strong when it comes to your wellness - trust it over external advice that doesn't resonate with your health destiny.",
+                    "Your health journey is teaching you the importance of self-care without guilt, which strengthens your overall luck. Making your wellbeing a priority benefits not just you but everyone around you in your life destiny. A health practice that combines movement with mindfulness, like yoga or tai chi, would be particularly beneficial now for your wellness luck. Pay attention to signs of burnout and honor your need for rest before exhaustion sets in, protecting your health destiny. Your environment affects your wellness luck - creating a space that feels peaceful and nurturing will support your wellbeing. Small, consistent health practices will be more effective than drastic changes that are hard to maintain in your health luck journey."
+                ],
+                closings: [
+                    "Your health is a precious gift that deserves your attention and care. By listening to your body's wisdom and honoring its needs, you'll cultivate lasting vitality and positive health luck.",
+                    "Wellbeing is a journey, not a destination. Each small step you take toward better health creates momentum that will carry you forward in your wellness destiny and luck.",
+                    "Your body is constantly working to maintain balance and health. By supporting rather than fighting against its natural processes, you'll experience greater wellbeing and aligned health luck.",
+                    "True health encompasses mind, body, and spirit. Nurturing all three aspects of your being will bring you into a state of wholeness and vitality that aligns with your wellness destiny and luck."
+                ],
+                actions: [
+                    "Establish a five-minute morning routine that includes deep breathing and setting an intention for your day to align with positive health luck.",
+                    "Track your energy levels throughout the day for one week to identify patterns and needs that impact your wellness destiny.",
+                    "Incorporate one additional serving of vegetables into your daily meals this week to boost your health luck.",
+                    "Create a peaceful space in your home where you can retreat for rest and rejuvenation, supporting your vitality luck."
+                ],
+                luckyElements: [
+                    "Amethyst crystal to support overall wellbeing and stress relief for positive health luck",
+                    "The color blue to enhance calmness and healing in your wellness destiny",
+                    "Lavender essential oil for relaxation and balance in your health luck",
+                    "Wednesdays, ruled by Mercury which governs communication - including with your body's luck"
+                ]
+            },
+            future: {
+                titles: [
+                    "Your Destiny & Life Path Luck",
+                    "Future Fortune Insights",
+                    "Life Journey Luck",
+                    "Destiny Path Reading"
+                ],
+                openings: [
+                    "Your life luck is entering a significant phase of your destiny journey. New opportunities will align with your soul's purpose and life path.",
+                    "Your future holds possibilities that reflect your current intentions and actions. The choices you make now are shaping your destiny and luck.",
+                    "A new chapter is beginning that will bring greater alignment between your outer circumstances and inner truth, enhancing your life luck.",
+                    "Future insights indicate that flexibility will serve you well as unexpected opportunities present themselves in your destiny journey."
+                ],
+                bodies: [
+                    "The path ahead holds both challenges and blessings, with each experience designed to support your growth and destiny luck. A significant opportunity will present itself in the coming months that aligns perfectly with your long-term goals and life luck. Trust that seemingly detours are actually guiding you toward something better than you initially planned in your destiny journey. Relationships will play a crucial role in your future, with some connections deepening and others naturally fading to align with your luck. Your intuition will be particularly strong during this period - pay attention to gut feelings and synchronicities that guide your decisions along your destiny path. Embracing change rather than resisting it will allow you to flow with rather than against the current of your life luck.",
+                    "Your future is bright with possibilities that reflect the seeds you've been planting in your destiny journey. A creative project or idea you've been nurturing will begin to bear fruit in your life luck. Travel or new experiences that expand your perspective are in your future, bringing valuable insights and connections that enhance your destiny. You'll be called to step into a greater version of yourself, letting go of limiting beliefs that have held you back from your true luck. Financial abundance is on the horizon, but true prosperity will come from aligning your work with your purpose in your destiny path. The future holds opportunities to heal past wounds and create greater wholeness in your life luck. Trust that you're being guided toward experiences that will help you fulfill your potential destiny.",
+                    "A significant transformation is coming that will change your perspective on what's possible in your life luck. This shift may feel challenging initially but will ultimately bring greater clarity and purpose to your destiny journey. You'll attract people and circumstances that mirror your growing self-awareness and wisdom, aligning with your luck. An unexpected collaboration or partnership will open new doors you hadn't considered in your destiny path. Your future self is calling you to embrace greater authenticity, even if it means stepping outside your comfort zone in your life luck. The path ahead invites you to release control and trust in the unfolding of your journey. Some plans may change, but these changes will lead you to something more aligned with your true destiny luck.",
+                    "Your future holds opportunities for growth that require you to embrace uncertainty in your life luck. The most rewarding experiences may come from directions you haven't yet considered in your destiny journey. A period of learning or expansion is ahead that will equip you with new skills and perspectives to enhance your luck. You'll have the chance to make amends or find closure in certain areas of your life, creating space for new beginnings in your destiny path. Your influence and impact on others will grow, requiring you to step into greater responsibility with humility in your life luck. The future invites you to live more intentionally, aligning your actions with your deepest values to fulfill your destiny. Trust that you have everything within you to navigate whatever comes next with grace and wisdom in your luck journey."
+                ],
+                closings: [
+                    "Your future is bright with possibilities that await your participation. By staying open, following your intuition, and taking aligned action, you'll create a life that reflects your highest potential and destiny luck.",
+                    "The journey ahead is uniquely yours, with lessons and blessings designed specifically for your growth. Trust that every step, whether forward or backward, is part of your perfect destiny path and luck.",
+                    "Your future self is already guiding you through intuitive nudges and synchronicities. By paying attention and taking small aligned actions, you'll unfold into the person you're meant to become in your destiny luck.",
+                    "The future holds more possibility than you can currently imagine. By releasing limiting beliefs and embracing uncertainty, you'll allow the fullness of your destiny and life luck to unfold."
+                ],
+                actions: [
+                    "Write a letter to your future self describing your hopes and intentions for your destiny, then set it aside to open in six months to track your luck.",
+                    "Identify one limiting belief that may be holding you back from your destiny and create an affirmation to counter it, aligning with your positive luck.",
+                    "Take a small step toward a long-held dream this week, no matter how insignificant it seems, to activate your destiny luck.",
+                    "Spend time in reflection to clarify your core values and how they can guide your future decisions along your destiny path and luck."
+                ],
+                luckyElements: [
+                    "Clear quartz crystal to amplify your intentions for the future and destiny luck",
+                    "The color purple to connect with your intuition and higher purpose in your life luck",
+                    "A vision board representing your hopes and aspirations for your destiny journey",
+                    "Sundays, ruled by the sun which symbolizes your life purpose and destiny luck"
+                ]
+            },
+            decision: {
+                titles: [
+                    "Life Decision Luck",
+                    "Choice & Destiny Insights",
+                    "Path Selection Luck",
+                    "Decision Fortune Reading"
+                ],
+                openings: [
+                    "The cosmic energies illuminate the options before you, revealing insights that can guide your important decision and align with your destiny luck.",
+                    "Your current crossroads is an opportunity for growth, regardless of the path you ultimately choose in your luck journey.",
+                    "Clarity is emerging about the decision before you, with subtle signs pointing toward your highest path and destiny luck.",
+                    "Insights about your current decision reveal that both options hold valuable lessons and opportunities for your luck growth."
+                ],
+                bodies: [
+                    "The decision before you involves choosing between security and growth, with each path offering different rewards in your destiny luck. Your intuition may be pulling you toward the option that feels more challenging, which often indicates the path of greater growth and alignment with your luck. Consider how each choice aligns with your long-term values rather than short-term desires in your destiny journey. Those closest to you may have opinions, but ultimately, only you can know what's right for your path and luck. Pay attention to how your body responds to each option - tension or contraction may indicate misalignment, while lightness suggests greater alignment with your destiny luck. This decision isn't permanent; you can course-correct if needed, but approaching it with mindfulness will help you choose with greater confidence in your luck journey.",
+                    "Both options before you lead to valid paths, but one aligns more closely with your authentic self and destiny luck. Notice which choice you think about when your mind is quiet - this often reveals your true preference in your luck journey. Fear may be clouding your judgment, particularly around potential failure or disappointment in your destiny path. Remember that there are no wrong decisions, only experiences that provide valuable information for your luck growth. The decision may not need to be made immediately; giving yourself time and space can bring greater clarity to your destiny luck. Consulting with someone who knows you well and has your best interests at heart may provide valuable perspective for your luck journey. Ultimately, trust that your inner wisdom will guide you to the choice that serves your highest good and destiny luck.",
+                    "The decision before you involves balancing practical considerations with your heart's desire in your luck journey. This is an opportunity to practice trusting yourself, even when the outcome is uncertain in your destiny path. One option may offer immediate benefits, while the other holds greater potential for long-term fulfillment in your luck. Notice any shoulds or societal expectations that may be influencing your thinking, and separate them from your true desires in your destiny luck. Meditation or time in nature can help quiet your mind so you can hear your intuition more clearly in your luck journey. This decision is helping you develop a muscle of trust that will serve you in future crossroads along your destiny path. Remember that you can't predict the future, but you can choose in alignment with your current truth and luck.",
+                    "You may be overcomplicating this decision by seeking certainty that isn't possible in your luck journey. Both paths have advantages and challenges that you can't fully anticipate in your destiny path. Your values can serve as a compass - which choice better aligns with what matters most to you in your luck? Sometimes not deciding is a decision in itself, allowing circumstances to unfold and provide more information for your destiny luck. Pay attention to synchronicities that may be guiding you toward one option in your luck journey. This decision is less about choosing the perfect path and more about trusting yourself to navigate whatever path you choose in your destiny. Whatever you decide, approaching it with commitment rather than doubt will help you make the most of the journey ahead in your luck."
+                ],
+                closings: [
+                    "Trust that whatever decision you make, you have the wisdom and resilience to navigate the path ahead. Every choice brings opportunities for growth and learning that are perfect for your journey and destiny luck.",
+                    "The clarity you seek will come through the act of choosing, not before it. Have courage to move forward with your decision, knowing you can adjust course as needed in your luck journey.",
+                    "Your decision is an expression of your growing self-awareness. By choosing in alignment with your truth, you honor your journey and create momentum toward your highest good and destiny luck.",
+                    "The most important part of this decision is trusting yourself enough to make it. Your confidence in your own judgment will serve you more than any perfect choice ever could in your luck journey."
+                ],
+                actions: [
+                    "Create a list of pros and cons for each option, then notice which list resonates more with your heart than your head to align with your destiny luck.",
+                    "Visualize yourself after making each choice and notice how each future version of you feels in your luck journey.",
+                    "Seek quiet time in nature to listen for your intuition's guidance about this decision in your destiny path.",
+                    "Set a clear timeline for making your decision to avoid prolonged uncertainty in your luck journey."
+                ],
+                luckyElements: [
+                    "Fluorite crystal to enhance mental clarity and decision making for your destiny luck",
+                    "The color yellow to stimulate clear thinking and confidence in your luck journey",
+                    "A journal dedicated to exploring your thoughts about this decision in your destiny path",
+                    "Fridays, ruled by Venus which governs values and what brings us joy in our luck"
+                ]
+            },
+            spiritual: {
+                titles: [
+                    "Spiritual Luck Journey",
+                    "Soul Destiny Insights",
+                    "Higher Self Luck",
+                    "Spiritual Growth Reading"
+                ],
+                openings: [
+                    "Your spiritual luck is in a period of growth and expansion, with new insights about your soul's purpose and destiny journey.",
+                    "Your spiritual path is accelerating, with opportunities to connect more deeply with your true nature and enhance your destiny luck.",
+                    "A spiritual awakening is unfolding, bringing greater awareness of your connection to all life and the universe in your luck journey.",
+                    "Spiritual insights indicate that you're ready to integrate higher wisdom into your daily life, bringing greater peace and purpose to your destiny luck."
+                ],
+                bodies: [
+                    "Your spiritual journey is leading you to a deeper understanding of your true nature beyond your identity and circumstances in your luck. Recent challenges have been spiritual initiations, preparing you for greater awareness and compassion in your destiny path. A spiritual practice that resonates with you - whether meditation, prayer, nature connection, or creative expression - will be particularly supportive now for your spiritual luck. You may notice increased intuition or synchronicities guiding your path. These are signs that you're aligning with your soul's purpose and destiny luck. Some relationships may shift as you grow spiritually, with those on similar paths drawing closer and others naturally fading to align with your luck. Your spiritual growth isn't about perfection but about remembering your true essence and living from that place in your destiny journey.",
+                    "You're experiencing a spiritual expansion that's opening your heart to greater love and compassion for yourself and others in your luck journey. This may bring up old wounds to be healed, as your increased awareness illuminates areas needing attention in your destiny luck. Trust that this process, while sometimes uncomfortable, is leading to greater wholeness in your luck. You may feel called to explore new spiritual teachings or practices that resonate with your current understanding in your destiny path. Nature is a powerful teacher for you now - spending time in natural settings will accelerate your spiritual growth and luck. Your role in the world is expanding as your consciousness expands, allowing you to contribute in ways that align with your soul's purpose and destiny luck. Remember to be gentle with yourself during this process; spiritual growth happens in its own time in your luck journey.",
+                    "Your spiritual journey is guiding you to integrate higher wisdom into practical daily life in your luck. This isn't about escaping the world but about bringing more light and consciousness into it in your destiny path. You may feel a calling to share your spiritual insights with others, whether through teaching, writing, or simply being an example in your luck. Trust this impulse, even if it feels uncomfortable at first in your destiny luck. Meditation or quiet reflection will help you connect with the stillness within that holds all answers for your luck journey. You're developing discernment about which spiritual teachings resonate with your truth versus those that come from external authority in your destiny path. Your intuition is becoming more reliable as a guide, helping you navigate both spiritual and practical matters in your luck. This is a time of remembering who you truly are beyond the limitations of the ego in your destiny luck.",
+                    "A significant spiritual awakening is unfolding, bringing with it a new perspective on reality and your place in it for your luck journey. This may initially create confusion as old beliefs dissolve, but clarity will emerge in your destiny luck. You're developing a deeper trust in the universe and its benevolent guidance for your luck. Surrendering control and allowing life to unfold will bring greater peace than trying to force outcomes in your destiny path. Your energy is becoming more sensitive, making it important to set boundaries and protect your spiritual space in your luck. You may feel drawn to like-minded souls who support your spiritual growth and understanding in your destiny luck. Remember that spiritual evolution is a journey, not a destination, and each step is perfect in its own way for your luck. Your presence alone, as a conscious being, contributes to the collective awakening of humanity in the destiny journey."
+                ],
+                closings: [
+                    "Your spiritual journey is unique and perfect for your soul's growth. Trust the process, even when it's unclear, and know that you're always guided and supported by the universe's loving intelligence in your destiny luck.",
+                    "Spiritual awakening is a lifelong journey of remembering and returning to your true nature. Each insight, challenge, and moment of peace is part of this sacred process in your luck journey. Embrace it all with an open heart for your destiny luck.",
+                    "Your connection to the divine is always present, even when you don't feel it. Cultivating awareness of this ever-present connection will bring you peace, wisdom, and guidance on your spiritual path and luck journey.",
+                    "The spiritual journey isn't about becoming someone different but about remembering who you've always been - a divine being having a human experience. This remembrance is unfolding within you now in your destiny luck."
+                ],
+                actions: [
+                    "Establish a daily spiritual practice, even if it's just five minutes of quiet reflection or meditation to enhance your spiritual luck.",
+                    "Spend time in nature with the intention of connecting to its wisdom and your place within it for your destiny journey.",
+                    "Journal about your spiritual insights and experiences to notice patterns and growth in your luck journey.",
+                    "Practice mindfulness in everyday activities, bringing presence to routine moments to align with your spiritual destiny luck."
+                ],
+                luckyElements: [
+                    "Selenite crystal to enhance spiritual connection and clarity for your luck journey",
+                    "The color white or clear to represent spiritual purity and light in your destiny luck",
+                    "A special object that reminds you of your spiritual connection in your luck journey",
+                    "Mondays, ruled by the moon which governs intuition and inner wisdom for your destiny luck"
+                ]
+            }
+        };
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Header scroll effect for better visibility
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('nav-scrolled');
+            } else {
+                header.classList.remove('nav-scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Service links - pre-select category
+        document.querySelectorAll('.service-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const serviceType = this.getAttribute('data-service');
+                document.getElementById('question-type').value = serviceType;
+            });
+        });
+        
+        // Form submission handling
+        const fortuneForm = document.getElementById('fortune-form');
+        const loadingModal = document.getElementById('loading-modal');
+        const readingResults = document.getElementById('reading-results');
+        const freeReadingsSection = document.getElementById('free-readings');
+        
+        fortuneForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading modal
+            loadingModal.classList.remove('hidden');
+            
+            // Get form values
+            const name = document.getElementById('full-name').value;
+            const birthDate = document.getElementById('birth-date').value;
+            const questionType = document.getElementById('question-type').value;
+            const specificQuestion = document.getElementById('specific-question').value;
+            
+            // Simulate processing time
+            setTimeout(() => {
+                // Hide loading modal
+                loadingModal.classList.add('hidden');
+                
+                // Generate reading
+                generateReading(name, questionType);
+                
+                // Show results section
+                readingResults.classList.remove('hidden');
+                
+                // Scroll to results
+                readingResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // Show notification
+                showNotification('Free Reading Ready', 'Your personalized fortune reading has been generated', 'success');
+            }, 3000);
+        });
+        
+        // Generate reading based on category
+        function generateReading(name, category) {
+            // Get template data for the selected category
+            const template = readingTemplates[category];
+            if (!template) return;
+            
+            // Randomly select elements from the template
+            const title = template.titles[Math.floor(Math.random() * template.titles.length)];
+            const opening = template.openings[Math.floor(Math.random() * template.openings.length)];
+            const body = template.bodies[Math.floor(Math.random() * template.bodies.length)];
+            const closing = template.closings[Math.floor(Math.random() * template.closings.length)];
+            const action = template.actions[Math.floor(Math.random() * template.actions.length)];
+            const luckyElement = template.luckyElements[Math.floor(Math.random() * template.luckyElements.length)];
+            
+            // Format category name for display
+            const categoryNames = {
+                love: "Love & Relationships Luck",
+                career: "Career & Financial Wealth",
+                health: "Health & Wellness",
+                future: "Destiny & Future Outlook",
+                decision: "Important Life Decisions",
+                spiritual: "Spiritual Guidance"
+            };
+            const displayCategory = categoryNames[category] || category;
+            
+            // Get current date
+            const now = new Date();
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('en-US', dateOptions);
+            
+            // Update result elements
+            document.getElementById('result-name').textContent = name;
+            document.getElementById('result-category').textContent = displayCategory;
+            document.getElementById('reading-date').textContent = formattedDate;
+            document.getElementById('reading-title').textContent = title;
+            document.getElementById('action-item').textContent = action;
+            document.getElementById('lucky-element').textContent = luckyElement;
+            
+            // Build reading content
+            const readingContent = `
+                <p class="mb-4">${opening}</p>
+                <p class="mb-4">${body}</p>
+                <p>${closing}</p>
+            `;
+            document.getElementById('reading-content').innerHTML = readingContent;
+        }
+        
+        // New reading button
+        document.getElementById('new-reading').addEventListener('click', function() {
+            // Reset form
+            fortuneForm.reset();
+            
+            // Hide results, show form
+            readingResults.classList.add('hidden');
+            freeReadingsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        
+        // Different category button
+        document.getElementById('different-category').addEventListener('click', function() {
+            // Hide results, show form (keep name and birthdate)
+            readingResults.classList.add('hidden');
+            freeReadingsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Focus on category select
+            document.getElementById('question-type').focus();
+        });
+        
+        // Reading action buttons
+        document.getElementById('download-reading').addEventListener('click', function() {
+            showNotification('Download Started', 'Your free reading is being prepared for download', 'success');
+        });
+        
+        document.getElementById('share-reading').addEventListener('click', function() {
+            showNotification('Shared', 'Your free reading has been shared with your selected contacts', 'success');
+        });
+        
+        document.getElementById('print-reading').addEventListener('click', function() {
+            showNotification('Printing', 'Opening print dialog for your free reading', 'info');
+            // In a real implementation, you would trigger window.print() here
+        });
+        
+        // Notification system
+        function showNotification(title, message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const notificationTitle = document.getElementById('notification-title');
+            const notificationMessage = document.getElementById('notification-message');
+            const notificationIcon = document.getElementById('notification-icon');
+            
+            // Set content
+            notificationTitle.textContent = title;
+            notificationMessage.textContent = message;
+            
+            // Set icon based on type
+            notificationIcon.className = '';
+            switch(type) {
+                case 'success':
+                    notificationIcon.className = 'fa fa-check-circle text-secondary text-xl';
+                    break;
+                case 'error':
+                    notificationIcon.className = 'fa fa-times-circle text-red-500 text-xl';
+                    break;
+                case 'warning':
+                    notificationIcon.className = 'fa fa-exclamation-triangle text-yellow-500 text-xl';
+                    break;
+                case 'info':
+                default:
+                    notificationIcon.className = 'fa fa-info-circle text-primary text-xl';
+                    break;
+            }
+            
+            // Show notification
+            notification.classList.remove('translate-y-20', 'opacity-0');
+            notification.classList.add('translate-y-0', 'opacity-100');
+            
+            // Auto hide after 5 seconds
+            const timeout = setTimeout(hideNotification, 5000);
+            
+            // Close button
+            document.getElementById('close-notification').onclick = () => {
+                clearTimeout(timeout);
+                hideNotification();
+            };
+        }
+        
+        function hideNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('translate-y-0', 'opacity-100');
+            notification.classList.add('translate-y-20', 'opacity-0');
+        }
+        
+        // Legal modal functions
+        const legalModal = document.getElementById('legal-modal');
+        
+        function openLegalModal(title, content) {
+            document.getElementById('legal-title').textContent = title;
+            document.getElementById('legal-content').innerHTML = content;
+            
+            // Show modal with animation
+            legalModal.classList.remove('hidden');
+            setTimeout(() => {
+                legalModal.classList.add('opacity-100');
+                legalModal.querySelector('div').classList.remove('scale-95');
+                legalModal.querySelector('div').classList.add('scale-100');
+            }, 10);
+            
+            // Prevent scrolling
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLegalModal() {
+            legalModal.classList.remove('opacity-100');
+            legalModal.querySelector('div').classList.remove('scale-100');
+            legalModal.querySelector('div').classList.add('scale-95');
+            
+            setTimeout(() => {
+                legalModal.classList.add('hidden');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }, 300);
+        }
+        
+        // Disclaimer content
+        function openDisclaimer() {
+            const content = `
+                <h4 class="text-lg font-semibold mb-4 mt-6">Entertainment Purpose Disclaimer</h4>
+                <p class="mb-4">
+                    The free fortune readings provided by DestinyRead are for entertainment purposes only. They should not be considered a substitute for professional advice, therapy, or counseling in any area including but not limited to legal, medical, financial, career, or relationship matters.
+                </p>
+                <p class="mb-4">
+                    All decisions and actions taken based on information from DestinyRead are the sole responsibility of the individual receiving the reading. We do not guarantee the accuracy, completeness, or usefulness of any information provided through our free services.
+                </p>
+                <p class="mb-4">
+                    By using DestinyRead, you acknowledge that you understand these limitations and agree that DestinyRead and its operators shall not be held liable for any damages or consequences resulting from your use of our free fortune telling services.
+                </p>
+                <p>
+                    If you are facing serious life challenges, we strongly recommend consulting with a qualified professional who can provide appropriate guidance tailored to your specific situation.
+                </p>
+            `;
+            openLegalModal('Disclaimer', content);
+        }
+        
+        // Privacy Policy content
+        function openPrivacyPolicy() {
+            const content = `
+                <h4 class="text-lg font-semibold mb-4 mt-6">Privacy Policy</h4>
+                <p class="mb-4">
+                    DestinyRead is committed to protecting your privacy. This policy explains how we collect, use, and protect your information when you use our free fortune telling services.
+                </p>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Information We Collect</h4>
+                <p class="mb-4">When you use our free services, we may collect:</p>
+                <ul class="list-disc pl-6 mb-4 space-y-2">
+                    <li>Personal information you provide, such as your name and birth date</li>
+                    <li>Your questions and the type of reading you request</li>
+                    <li>Technical information about your device and usage patterns</li>
+                </ul>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">How We Use Your Information</h4>
+                <p class="mb-4">We use your information to:</p>
+                <ul class="list-disc pl-6 mb-4 space-y-2">
+                    <li>Generate personalized free readings</li>
+                    <li>Improve our services and user experience</li>
+                    <li>Respond to your inquiries</li>
+                </ul>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Information Protection</h4>
+                <p class="mb-4">
+                    We implement reasonable security measures to protect your information from unauthorized access, use, or disclosure. However, no method of transmission over the internet is completely secure.
+                </p>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Third Parties</h4>
+                <p class="mb-4">
+                    We do not share your personal information with third parties except as necessary to provide our free services or as required by law.
+                </p>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Your Choices</h4>
+                <p>
+                    You may choose not to provide certain information, but this may limit your ability to use our free services. You can contact us to request access to or deletion of your personal information.
+                </p>
+            `;
+            openLegalModal('Privacy Policy', content);
+        }
+        
+        // Terms of Service content
+        function openTerms() {
+            const content = `
+                <h4 class="text-lg font-semibold mb-4 mt-6">Terms of Service</h4>
+                <p class="mb-4">
+                    By using DestinyRead's free fortune telling services, you agree to these terms and conditions. If you do not agree, please do not use our services.
+                </p>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Service Use</h4>
+                <p class="mb-4">
+                    DestinyRead provides free entertainment services in the form of fortune readings. You must be 18 years or older to use our services. You agree to use our services only for lawful purposes.
+                </p>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Intellectual Property</h4>
+                <p class="mb-4">
+                    All content provided through DestinyRead, including free readings, text, and graphics, is the property of DestinyRead and protected by copyright laws. You may not reproduce, distribute, or create derivative works without our express permission.
+                </p>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Disclaimer of Warranties</h4>
+                <p class="mb-4">
+                    Our free services are provided "as is" without any warranties, express or implied. We do not guarantee the accuracy, reliability, or timeliness of any information provided through our services.
+                </p>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Limitation of Liability</h4>
+                <p class="mb-4">
+                    DestinyRead shall not be liable for any damages arising from your use of or inability to use our free services, including but not limited to direct, indirect, incidental, or consequential damages.
+                </p>
+                
+                <h4 class="text-lg font-semibold mb-4 mt-6">Changes to Terms</h4>
+                <p>
+                    We may update these terms from time to time. We will notify you of significant changes by posting the updated terms on our website. Your continued use of our free services after changes constitutes acceptance of the new terms.
+                </p>
+            `;
+            openLegalModal('Terms of Service', content);
+        }
+        
+        // Close legal modal
+        document.getElementById('close-legal').addEventListener('click', closeLegalModal);
+        
+        // Close legal modal when clicking outside
+        legalModal.addEventListener('click', (e) => {
+            if (e.target === legalModal) {
+                closeLegalModal();
+            }
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.card-hover');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animate-fade-in-up');
+                }
+            });
+        }
+        
+        // Run on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Mobile responsiveness enhancements
+        function handleMobileView() {
+            const viewportWidth = window.innerWidth;
+            
+            // Adjust font sizes for very small screens
+            if (viewportWidth < 360) {
+                document.documentElement.style.setProperty('--base-font-size', '0.9rem');
+            } else {
+                document.documentElement.style.removeProperty('--base-font-size');
+            }
+            
+            // Ensure buttons are fully clickable on mobile
+            const buttons = document.querySelectorAll('button, a');
+            buttons.forEach(button => {
+                if (button.offsetWidth < 48 || button.offsetHeight < 48) {
+                    button.style.minWidth = '48px';
+                    button.style.minHeight = '48px';
+                }
+            });
+        }
+        
+        // Run on load and resize
+        window.addEventListener('load', handleMobileView);
+        window.addEventListener('resize', handleMobileView);
+    </script>
+</body>
+</html>
