@@ -1,0 +1,61 @@
+# robots.txt for https://destinyread.pages.dev/
+# Created: 2024-11-07
+
+User-agent: *
+Disallow: /
+
+# Allow all search engines to crawl the main page and in-page anchors
+Allow: /$
+Allow: /#stitcher$
+Allow: /#how-it-works$
+Allow: /#features$
+Allow: /#faq$
+Allow: /#privacy-policy$
+Allow: /#terms-of-service$
+Allow: /#cookie-policy$
+
+# Block unnecessary resources
+Disallow: /*.css$
+Disallow: /*.js$
+Disallow: /*.svg$
+Disallow: /*.png$
+Disallow: /*.jpg$
+Disallow: /*.webp$
+
+# Sitemap location
+Sitemap: https://destinyread.pages.dev/sitemap.xml
+
+# Crawl delay (polite request for search engines)
+Crawl-delay: 10
+
+# Specific directives for major search engines
+User-agent: Googlebot
+Allow: /$
+Allow: /#*$
+Crawl-delay: 5
+
+User-agent: Bingbot
+Allow: /$
+Allow: /#*$
+Crawl-delay: 5
+
+User-agent: YandexBot
+Allow: /$
+Allow: /#*$
+Crawl-delay: 10
+
+# Block scrapers and bots with suspicious user-agents
+User-agent: *bot*
+Disallow: /
+Allow: /$
+Allow: /#*$
+
+User-agent: *crawler*
+Disallow: /
+Allow: /$
+Allow: /#*$
+
+User-agent: *spider*
+Disallow: /
+Allow: /$
+Allow: /#*$
